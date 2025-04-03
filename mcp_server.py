@@ -7,7 +7,7 @@ mcp = FastMCP("Mac TTS")
 
 @mcp.tool()
 def quick_speak(text: str, language: str) -> str:
-    en = {'voice': 'Moira', 'rate': 200}
+    en = {'voice': 'Samantha', 'rate': 180}
     pt = {'voice': 'Luciana', 'rate': 200}
 
     kwargs = {
