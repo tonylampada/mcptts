@@ -1,10 +1,8 @@
 # MCPTTS
 
-A simple Python package that enables Claude to speak through your Mac's text-to-speech system.
+Make Claude speak using MCP
 
-## What it does
-
-MCPTTS provides a lightweight wrapper around macOS's built-in text-to-speech capabilities and exposes it via the Model Context Protocol (MCP). This allows Claude and other AI assistants to speak through your computer's audio.
+[![CleanShot 2025-04-02 at 08 00 05@2x](https://github.com/user-attachments/assets/5e1dee79-0e21-48bf-9952-a0619aafddb4)](https://www.loom.com/share/febbe046bb43488dbebe9c0348cbc690)
 
 ## Installation
 
