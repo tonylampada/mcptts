@@ -6,9 +6,22 @@ import tts
 mcp = FastMCP("Mac TTS")
 
 @mcp.tool()
-def quick_speak(text: str) -> str:
-    tts.async_say(text, voice="Samantha")
-    return f"Spoke text using default voice (Samantha)"
+def quick_speak(text: str, language: str) -> str:
+    en = {'voice': 'Moira', 'rate': 200}
+    pt = {'voice': 'Luciana', 'rate': 200}
+
+    kwargs = {
+        'en': en,
+        'en-us': en,
+        'en_us': en,
+        'pt': pt,
+        'pt-br': pt,
+        'pt_br': pt,
+        'pt-pt': pt,
+        'pt_pt': pt,
+    }[language.lower()]
+    tts.async_say(text, **kwargs)
+    return f"Spoke text using language {language}"
 
 if __name__ == "__main__":
     mcp.run()
