@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Write Self-Documenting Code
+
+Code should speak for itself through clear structure and meaningful names. Avoid comments unless absolutely necessary for complex business logic or legal requirements.
+
+## Core Principles
+
+1. **Clear Function Names**
+   - Use verbs for actions: `calculateTotal()`, `validateInput()`
+   - Be specific: `findUserByEmail()` not `getUser()`
+   - Keep it concise but descriptive
+
+2. **Small, Focused Functions**
+   - Each function does ONE thing
+   - Maximum 20-30 lines per function
+   - Extract complex logic into well-named helper functions
+
+3. **Meaningful Variable Names**
+   - Use full words: `userCount` not `uc`
+   - Include units when relevant: `delayInMilliseconds`
+   - Use domain terminology
+
+4. **Clear Data Structures**
+   - Name objects and classes after real-world concepts
+   - Use enums instead of magic numbers
+   - Structure code to match business logic
+
+## When to Use Comments
+
+Comments should only be used for:
+- Legal requirements (copyright, license)
+- Complex business logic that can't be simplified
+- Temporary TODOs with tickets/issues referenced
+- API documentation
+
+Remember: If you need a comment to explain what your code does, consider refactoring first.

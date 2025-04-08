@@ -2,6 +2,9 @@ import requests
 import pyaudio
 import wave
 import io
+import tempfile
+import os
+import subprocess
 
 # Server info
 server = "http://jarbas.tail925c5f.ts.net:5002"
@@ -33,22 +36,29 @@ p = pyaudio.PyAudio()
 stream = p.open(format=p.get_format_from_width(2), channels=1, rate=22050, output=True)
 
 
-def play_wave_bytes(wave_bytes):
-    wav_buffer = io.BytesIO(wave_bytes)
-    with wave.open(wav_buffer, 'rb') as wav_file:
-        audio_data = wav_file.readframes(wav_file.getnframes())
-        stream.write(audio_data)
+def play_wave_file(filepath):
+    wf = wave.open(filepath, 'rb')
+    audio_data = wf.readframes(wf.getnframes())
+    stream.write(audio_data)
+    wf.close()
 
 def say(text, language="en"):
     print(f"will say {text} using language {language}")
     wav = get_wav(text, language)
     print(f"got wav {text} using language {language}")
-    try:
-        play_wave_bytes(wav)
-    except Exception as e:
-        print(f"Error: {e}")
-        import traceback
-        traceback.print_exc()
+    with tempfile.TemporaryDirectory() as tmpdir:
+        orig_wav = os.path.join(tmpdir, "original.wav")
+        with open(orig_wav, "wb") as f:
+            f.write(wav)
+        
+        fast_wav = os.path.join(tmpdir, "fast.wav")
+        subprocess.run([
+            "ffmpeg", "-i", orig_wav,
+            "-filter:a", "atempo=1.35",
+            "-y", fast_wav
+        ], check=True)
+        
+        play_wave_file(fast_wav)
 
 
 def save(text, language, wavout):
