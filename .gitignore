@@ -45,3 +45,5 @@ coverage.xml
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+data/

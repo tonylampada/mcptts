@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Use uv and virtualenv
+
+- There's a virtualenv in /.venv/ - use it
+- Use uv pip if you need to install packages
